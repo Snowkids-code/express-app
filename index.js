@@ -16,11 +16,13 @@ app.use(
   })
 );
 
+const key = process.env.API_KEY
+
 app.post("/", async (req, res) => {
   const category = req.body.category;
   try {
     const result = await axios.get(
-      `https://api.nytimes.com/svc/topstories/v2/${category}.json?api-key=4kTUikP2ty8GJaOfPDGVlF3Yp0XRkKEV`
+      `https://api.nytimes.com/svc/topstories/v2/${category}.json?api-key=${key}`
     );
     res.send(result.data.results);
   } catch (error) {
